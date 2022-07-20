@@ -1,0 +1,16 @@
+extends basic.pug
+block content
+
+    div Ваши персональные данные (log: #{user.uaerName}) :
+        p id: #{user.id}
+        p email: #{user.email}
+
+    div Ваши статьи
+        p
+            a(href="/articles") Добавить статьи
+        p
+            a(href="/articles/my") Подробный список статей
+        ul
+            each article in articles 
+                li
+                    a(href="/articles/read/" + article._id) #{article.title} 

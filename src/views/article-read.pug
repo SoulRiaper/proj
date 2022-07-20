@@ -1,0 +1,11 @@
+extends basic.pug
+block content 
+    h1 #{article.title}
+    p #{article.content}
+
+
+    p 
+        a(href="/user") Назад 
+
+    footer authors id: #{article.user.id}
+

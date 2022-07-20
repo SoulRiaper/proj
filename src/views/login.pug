@@ -1,0 +1,14 @@
+extends basic.pug
+block content
+    form(action="", method = 'POST') 
+        div Введите логин или Email;
+        p 
+            input(type="text", name = 'email')
+        p 
+            input(type="text", name = 'pass')
+
+        p
+            input(type="submit", value="Войти")
+
+        p 
+            a(href="/auth/reg") Если нет аккаунта вы можете зарегестрироваться

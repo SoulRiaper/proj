@@ -1,0 +1,14 @@
+extends basic.pug
+block content
+    form(action="", method = 'POST') 
+        div Введите название вашей статьи.
+        p 
+            input(type="text", name = 'title')
+        p   Введите текст статьи.
+        p    
+            input(type="text", name = 'content')
+
+        p
+            input(type="submit", value="Сохранить")
+        p 
+            a(href="/articles/my") Смотреть все статьи
