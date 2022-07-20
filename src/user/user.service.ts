@@ -56,5 +56,9 @@ export class UserService {
     async exit(res: Response){
         res.clearCookie('Authorization')
     }
+
+    async gitTest(){
+        return ' функция создана чтобы протестить гит коммит '
+    }
         
 }
