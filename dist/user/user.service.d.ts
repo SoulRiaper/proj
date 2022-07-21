@@ -17,4 +17,5 @@ export declare class UserService {
     jwtToId(data: any): Promise<any>;
     authorizedUserInfo(req: Request): Promise<import("@mikro-orm/core").Loaded<User, never>>;
     exit(res: Response): Promise<void>;
+    addTelegramId(req: any, chatId: any): Promise<void>;
 }

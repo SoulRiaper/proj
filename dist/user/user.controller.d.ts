@@ -10,4 +10,6 @@ export declare class UserController {
         articles: import("@mikro-orm/core").Loaded<import("../articles/article.entity").Articles, never>[];
     }>;
     exit(res: Response): Promise<void>;
+    getAddTelega(): Promise<void>;
+    addTelegram(req: Request, chatId: number): Promise<void>;
 }

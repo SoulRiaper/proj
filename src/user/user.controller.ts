@@ -31,5 +31,17 @@ export class UserController {
     async exit(@Res({ passthrough: true }) res: Response){
         this.userService.exit(res);
     }
+
+
+    @Get("/addTelega")
+    @Render('add-telega')
+    async getAddTelega(){
+
+    }
+
+    @Post("/addTelega")
+    async addTelegram( @Req() req: Request, @Body() chatId: number ){
+        this.userService.addTelegramId(req,chatId)
+    }
     
 }

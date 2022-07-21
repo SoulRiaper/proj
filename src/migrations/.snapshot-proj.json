@@ -41,6 +41,15 @@
           "primary": false,
           "nullable": false,
           "mappedType": "string"
+        },
+        "telegram_id": {
+          "name": "telegram_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
         }
       },
       "name": "user",
@@ -61,6 +70,15 @@
           ],
           "composite": false,
           "keyName": "user_uaer_name_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "telegram_id"
+          ],
+          "composite": false,
+          "keyName": "user_telegram_id_unique",
           "primary": false,
           "unique": true
         },

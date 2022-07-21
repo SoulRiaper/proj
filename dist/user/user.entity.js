@@ -34,6 +34,10 @@ __decorate([
     (0, core_1.OneToMany)(() => article_entity_1.Articles, article => article.user),
     __metadata("design:type", core_1.Collection)
 ], User.prototype, "articlesCollection", void 0);
+__decorate([
+    (0, core_1.Property)({ unique: true, nullable: true }),
+    __metadata("design:type", Number)
+], User.prototype, "telegramId", void 0);
 User = __decorate([
     (0, core_1.Entity)({ tableName: 'user' })
 ], User);

@@ -20,6 +20,9 @@ export class User {
     articlesCollection: Collection<Articles>;
     
 
+    @Property({ unique: true, nullable: true })
+    telegramId?: number
+
     
    
 }

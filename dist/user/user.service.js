@@ -55,6 +55,13 @@ let UserService = class UserService {
     async exit(res) {
         res.clearCookie('Authorization');
     }
+    async addTelegramId(req, chatId) {
+        const token = await req.cookies.Authorization;
+        const id = await this.jwtToId(token);
+        const user = await this.em.findOne(user_entity_1.User, { id: id });
+        user.telegramId = Number(Object.values(chatId));
+        this.em.flush();
+    }
 };
 UserService = __decorate([
     (0, common_1.Injectable)(),

@@ -5,7 +5,6 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request, Response } from 'express';
 import { CreateUserDto } from './dto/create-user.dto';
-import { JwtPatternDto } from './dto/jwt-pattern.dto';
 import { User } from './user.entity';
 
 
@@ -57,6 +56,14 @@ export class UserService {
         res.clearCookie('Authorization')
     }
 
-    
+    async addTelegramId(req, chatId){
+        const token = await req.cookies.Authorization;
+        const id = await this.jwtToId(token)
+
+        const user = await this.em.findOne(User,  { id: id })
+        user.telegramId = Number(Object.values(chatId))
+        this.em.flush()
+
+    }
         
 }

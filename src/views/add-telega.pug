@@ -1,0 +1,10 @@
+extends basic.pug
+block content
+    form(action="", method = 'POST') 
+        div Втелеграм перейдитек нашему боту или введите в поиске
+            a(href="https://t.me/hiper_rabbit_bot") @hiper_rabbit_bot
+        p Если уже зарегестрировались введите илии выберите команду "/auth" без кавычек
+        p После этого введите идентификатор в строку ниже!
+            input(type="text", name = 'chatId')
+
+            input(type="submit", value = 'Подтвердить')

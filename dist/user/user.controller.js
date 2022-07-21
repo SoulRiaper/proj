@@ -30,6 +30,11 @@ let UserController = class UserController {
     async exit(res) {
         this.userService.exit(res);
     }
+    async getAddTelega() {
+    }
+    async addTelegram(req, chatId) {
+        this.userService.addTelegramId(req, chatId);
+    }
 };
 __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
@@ -48,6 +53,21 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "exit", null);
+__decorate([
+    (0, common_1.Get)("/addTelega"),
+    (0, common_1.Render)('add-telega'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getAddTelega", null);
+__decorate([
+    (0, common_1.Post)("/addTelega"),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Number]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "addTelegram", null);
 UserController = __decorate([
     (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UserService,

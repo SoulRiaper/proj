@@ -6,4 +6,5 @@ export declare class User {
     pass: string;
     uaerName: string;
     articlesCollection: Collection<Articles>;
+    telegramId?: number;
 }
