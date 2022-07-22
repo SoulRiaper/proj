@@ -9,6 +9,7 @@ import { ArticlesModule } from './articles/articles.module';
 import { PassportModule } from '@nestjs/passport';
 import { BotService } from './bot.service';
 import { Articles } from './articles/article.entity';
+import { User } from './user/user.entity';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { Articles } from './articles/article.entity';
   }),
     MikroOrmModule.forRoot(config),
     forwardRef( () => MikroOrmModule.forFeature([Articles]) ),
+    forwardRef( () => MikroOrmModule.forFeature([User]) ),
     AuthModule,
     UserModule,
     ArticlesModule,

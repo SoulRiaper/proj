@@ -12,7 +12,9 @@ export class BotService implements OnModuleInit {
     constructor(
         private readonly orm: MikroORM,
         @InjectRepository(Articles)
-        private userRepository: EntityRepository<Articles>,
+        private articlesRepository: EntityRepository<Articles>,
+        @InjectRepository(User)
+        private userRepozitory: EntityRepository<User>
         
     ){}
     
@@ -67,5 +69,24 @@ ${(await post).content}`)
             }
 
         })
+
+        bot.onText(/\/spam (.+)/, async (msg, match) => {
+
+            const chatId = msg.chat.id
+            const content = match[1];
+            if(chatId === 1589195966){
+                const tgUsers = await em.find(User, { telegramId: { $gt: 1, }})
+
+                for(let user of tgUsers){
+                    bot.sendMessage(user.telegramId , content )
+                }
+
+            } else {
+                bot.sendMessage(chatId , 'You dont have permission to do it!' )
+            }
+
+        })
+
+
     }
 }

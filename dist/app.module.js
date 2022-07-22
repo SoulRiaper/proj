@@ -18,6 +18,7 @@ const articles_module_1 = require("./articles/articles.module");
 const passport_1 = require("@nestjs/passport");
 const bot_service_1 = require("./bot.service");
 const article_entity_1 = require("./articles/article.entity");
+const user_entity_1 = require("./user/user.entity");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -30,6 +31,7 @@ AppModule = __decorate([
             }),
             nestjs_1.MikroOrmModule.forRoot(mikro_orm_config_1.default),
             (0, common_1.forwardRef)(() => nestjs_1.MikroOrmModule.forFeature([article_entity_1.Articles])),
+            (0, common_1.forwardRef)(() => nestjs_1.MikroOrmModule.forFeature([user_entity_1.User])),
             auth_module_1.AuthModule,
             user_module_1.UserModule,
             articles_module_1.ArticlesModule,

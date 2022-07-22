@@ -18,10 +18,12 @@ const nestjs_1 = require("@mikro-orm/nestjs");
 const postgresql_1 = require("@mikro-orm/postgresql");
 const common_1 = require("@nestjs/common");
 const article_entity_1 = require("./articles/article.entity");
+const user_entity_1 = require("./user/user.entity");
 let BotService = class BotService {
-    constructor(orm, userRepository) {
+    constructor(orm, articlesRepository, userRepozitory) {
         this.orm = orm;
-        this.userRepository = userRepository;
+        this.articlesRepository = articlesRepository;
+        this.userRepozitory = userRepozitory;
     }
     onModuleInit() {
         this.botStart();
@@ -61,12 +63,27 @@ ${(await post).content}`);
                 bot.sendMessage(chatId, "у вас пока нет статей");
             }
         });
+        bot.onText(/\/spam (.+)/, async (msg, match) => {
+            const chatId = msg.chat.id;
+            const content = match[1];
+            if (chatId === 1589195966) {
+                const tgUsers = await em.find(user_entity_1.User, { telegramId: { $gt: 1, } });
+                for (let user of tgUsers) {
+                    bot.sendMessage(user.telegramId, content);
+                }
+            }
+            else {
+                bot.sendMessage(chatId, 'You dont have permission to do it!');
+            }
+        });
     }
 };
 BotService = __decorate([
     (0, common_1.Injectable)(),
     __param(1, (0, nestjs_1.InjectRepository)(article_entity_1.Articles)),
+    __param(2, (0, nestjs_1.InjectRepository)(user_entity_1.User)),
     __metadata("design:paramtypes", [core_1.MikroORM,
+        postgresql_1.EntityRepository,
         postgresql_1.EntityRepository])
 ], BotService);
 exports.BotService = BotService;
